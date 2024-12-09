@@ -106,6 +106,8 @@
                 </div>
         
                 <button type="submit" class="submit-btn">Envoyer</button>
+
+                <br><br>
         
                 <h4>Voici l'email qui sera envoyé depuis votre boite mail:</h4>
                 <p>test</p>
@@ -132,6 +134,16 @@
                     };
 
                     emailjs.send(serviceID, templateID, params).then(
+                          if (!params["reply_to"] || !params["user_name"]) {
+                            alert("Tous les champs sont obligatoires.");
+                            return;
+                          }
+                          
+                          if (!validateEmail(params["reply_to"])) {
+                            alert("L'adresse email est invalide.");
+                            return;
+                          }
+                    
                         () => {
                             alert("Email envoyé avec succès !");
                             document.getElementById("emailForm").reset();
