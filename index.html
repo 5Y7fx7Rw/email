@@ -67,7 +67,7 @@
             padding: 0.75rem;
             font-size: 1rem;
             color: white;
-            background: lightsteelblue;
+            background: blue;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -116,6 +116,11 @@
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <script>
+            const validateEmail = (email) => {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return emailRegex.test(email);
+            };
+            
             (function () {
                 emailjs.init("pAadiaV18LAHbOEVb");
             })();
